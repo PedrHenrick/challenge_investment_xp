@@ -22,5 +22,8 @@
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.7"
+  },
+  "scripts": {
+    "dev": "nodemon --exec tsnd --transpile-only ./src/server.ts"
   }
 }
