@@ -22,7 +22,8 @@
     "mysql2": "^2.3.3",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.7"
+    "typeorm": "^0.3.7",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "dev": "nodemon --exec ts-node --transpile-only ./src/server.ts"
