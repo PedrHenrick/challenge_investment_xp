@@ -1,0 +1,8 @@
+{
+  "name": "simulation_b3_database",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:PedrHenrick/simulation_b3_database.git",
+  "author": "Pedro Mesquita <pedro.mesquita.hc@gmail.com>",
+  "license": "MIT"
+}
