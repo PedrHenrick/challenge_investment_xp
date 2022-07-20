@@ -1,14 +1,24 @@
 {
-  "compilerOptions": {
-    "target": "es2016",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "module": "commonjs",
+	"compilerOptions": {
+		"target": "es2022",
+		"lib": ["es5", "es6", "es2022"],
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"allowJs": true,
     "rootDir": "./src",
-    "outDir": "./public",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "skipLibCheck": true
-  }
+		"outDir": "./public",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"strictPropertyInitialization": false
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "public"],
+	"ts-node": {
+		"files": true
+	}
 }
