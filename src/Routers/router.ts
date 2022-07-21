@@ -1,8 +1,8 @@
 import express from 'express';
-import { investmentRoute} from './investmentRoute';
+import { DatabaseController } from '../Controllers/DatabaseController';
 
 const router = express.Router();
 
-router.use('/investimentos', investmentRoute);
+router.get('/', new DatabaseController().all);
 
 export { router };
