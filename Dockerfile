@@ -8,6 +8,4 @@ RUN npm install
 
 COPY . .
 
-RUN rm -rf ./src
-
 CMD ["npm", "start"];

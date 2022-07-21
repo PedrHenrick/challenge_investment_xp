@@ -29,7 +29,7 @@
     "typescript": "^4.7.4"
   },
   "scripts": {
-    "start": "npx tsc && ts-node public/server.js",
+    "start": "ts-node src/server.ts",
     "dev": "nodemon --exec ts-node --transpile-only ./src/server.ts",
     "migration:generate": "typeorm-ts-node-commonjs -d ./src/Database/data-source.ts migration:generate ./src/Database/Migrations/default",
     "migration:run": "typeorm-ts-node-commonjs -d ./src/Database/data-source.ts migration:run"
