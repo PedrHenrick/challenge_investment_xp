@@ -34,7 +34,7 @@ export class AutoUpdateDatabaseService {
             ativo: assets.ativo
           });
       }
-    }))
-    return 'Atualizado'
+    }));
+    return 'Atualizado';
   };
 }

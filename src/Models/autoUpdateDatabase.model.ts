@@ -17,4 +17,4 @@ export class AutoUpdateDatabaseModel {
     
     return FinanceAssetRepository.save(Assets);
   }
-}
+};

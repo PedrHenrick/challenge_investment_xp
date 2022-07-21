@@ -7,7 +7,7 @@ class ManagerCron{
     this.jobs = [autoUpdateDatabase]
   }
 
-  run()  { this.jobs.forEach(job => job.start()) }
+  run() { this.jobs.forEach(job => job.start()) }
 }
 
 export default new ManagerCron();
