@@ -6,4 +6,4 @@ async function autoUpdateDatabase() {
   console.log(getAll.data);
 }
 
-export default cron.schedule("*/15 * * * * *", autoUpdateDatabase);
+export default cron.schedule("*/5 * * * * *", autoUpdateDatabase);
