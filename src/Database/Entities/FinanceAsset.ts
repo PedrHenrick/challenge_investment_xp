@@ -1,10 +1,10 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from 'uuid';
 
 @Entity('financial_assets')
 export class FinanceAsset {
-  @PrimaryColumn({ type: 'uuid', default: uuid() })
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ type: 'varchar', unique: true })
   ativo: string;
@@ -17,4 +17,8 @@ export class FinanceAsset {
 
   @UpdateDateColumn({ type: 'timestamp', default: 'now()' })
   updated_at: Date;
+
+  constructor() {
+    if (!this.id) this.ativo = uuid();
+  }
 }
