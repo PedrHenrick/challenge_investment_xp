@@ -31,6 +31,8 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
+    "start": "ts-node public/server.ts",
+    "transpile": "npx tsc",
     "dev": "nodemon --exec ts-node --transpile-only ./src/server.ts",
     "migration:generate": "typeorm-ts-node-commonjs -d ./src/Database/data-source.ts migration:generate ./src/Database/Migrations/default",
     "migration:run": "typeorm-ts-node-commonjs -d ./src/Database/data-source.ts migration:run"
