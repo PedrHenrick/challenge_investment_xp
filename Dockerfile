@@ -8,4 +8,6 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "transpile", "&&", "rm -rf", "src", "&&", "npm", "start"];
+RUN rm -rf ./src
+
+CMD ["npm", "start"];
