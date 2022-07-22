@@ -20,6 +20,7 @@ export class LoginService {
     }
 
     const token = generateJWTToken({
+      client_code: user.client_code,
       email: user.email,
       password: user.password,
     });

@@ -1,3 +1,4 @@
+import { StatusCodes } from 'http-status-codes';
 import jwt, { SignOptions } from 'jsonwebtoken'; 
 import ErrorHandle from '../Class/error';
 import { userType } from '../Types/User.type';
@@ -17,6 +18,6 @@ export const authenticateToken = async (token: string) => {
     const hasValid = await jwt.verify(token, SECRET, jwtConfig);
     return hasValid;
   } catch (_err) {
-    throw new ErrorHandle(401, 'Invalid token');
+    throw new ErrorHandle(StatusCodes.UNAUTHORIZED, 'Invalid token');
   }
 };

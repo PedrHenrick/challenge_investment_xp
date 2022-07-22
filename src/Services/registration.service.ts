@@ -24,6 +24,7 @@ export class RegistrationService {
     });
 
     const token = generateJWTToken({
+      client_code: userCreated.client_code,
       email: userCreated.email,
       password: userCreated.password,
     });
