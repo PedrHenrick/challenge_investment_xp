@@ -5,7 +5,15 @@ import validateSchemaTransation from '../Middlewares/transationValidate.middewar
 const userRouter = Router();
 
 userRouter.get('/:codCliente/saldo', new UserController().getBalance);
-userRouter.post('/saque', validateSchemaTransation, new UserController().addWithdraw);
-// userRouter.post('/:codCliente/deposito', new UserController().deposit);
+userRouter.post(
+  '/saque',
+  validateSchemaTransation,
+  new UserController().addWithdraw
+);
+userRouter.post(
+  '/deposito',
+  validateSchemaTransation,
+  new UserController().addDeposit
+);
 
 export { userRouter };
