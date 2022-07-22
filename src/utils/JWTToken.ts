@@ -5,8 +5,8 @@ import { userType } from '../Types/User.type';
 const SECRET = process.env.JWT_SECRET || 'bananinhaDePijaminha';
 
 const jwtConfig: SignOptions = {
-  expiresIn: '24H',
   algorithm: 'HS256',
+  noTimestamp: true,
 };
 
 export const generateJWTToken = (payload: userType) => 

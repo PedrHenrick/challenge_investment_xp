@@ -22,7 +22,11 @@ export class RegistrationService {
       email: user.email,
       password: user.password,
     });
-    const token = generateJWTToken({...userCreated});
+
+    const token = generateJWTToken({
+      email: userCreated.email,
+      password: userCreated.password,
+    });
     return token;
   }
 };
