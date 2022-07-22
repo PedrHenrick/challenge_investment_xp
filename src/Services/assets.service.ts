@@ -1,11 +1,26 @@
 import { AssetsModel } from "../Models/assets.model";
+import { assetType } from "../Types/Assets.type";
 import getRandomInt from "../utils/getRandomInt";
+
+const Serialize = (assets: assetType) => {
+  const assetsSerialized = {
+    codAtivo: assets.asset_code,
+    NomeAtivo: assets.name,
+    QtdeAtivo: assets.amount_assets,
+    Valor: assets.value,
+  };
+  return assetsSerialized;
+}
 
 export class AssetsService {
   async all() {
-    const Database = new AssetsModel();
-    const allAssets = await Database.all();
-    return allAssets;
+    const assetsInstance = new AssetsModel();
+    const allAssets = await assetsInstance.all();
+
+    const allAssetsSerialized = allAssets
+      .map((asset) => Serialize(asset));
+    
+      return allAssetsSerialized;
   }
 
   async autoUpdate() {
@@ -18,20 +33,20 @@ export class AssetsService {
           assets.value += (assets.value * (getRandomInt(1, 1) / 100));
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            value: Math.round(assets.value),
+            value: assets.value,
           });
           break;
         case 2:
           assets.value -= (assets.value * (getRandomInt(1, 3) / 100));
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            value: Math.round(assets.value),
+            value: assets.value,
           });
           break;
         default:
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            value: Math.round(assets.value),
+            value: assets.value,
           });
       }
     }));
