@@ -3,8 +3,7 @@ import 'express-async-errors';
 import { AppDataSource } from './Database/data-source';
 import cors from 'cors'
 import startCron from './cron/start-cron';
-import { DatabaseController } from './Controllers/database.controller';
-import { autoUpdateDatabaseController } from './Controllers/autoUpdateDatabase.controller';
+import { router } from './Routes/router';
 
 AppDataSource.initialize().then(() => {
   const PORT = process.env.PORT || 3000;
@@ -12,8 +11,7 @@ AppDataSource.initialize().then(() => {
 
   app.use(cors());
   app.use(express.json());
-  app.get('/', new DatabaseController().all);
-  app.get('/update', new autoUpdateDatabaseController().autoUpdate);
+  app.use(router);
 
   return app.listen(PORT, () => {
     console.log(`Server is running in ${ PORT }`);
