@@ -7,8 +7,9 @@ export class AssetsModel {
     return allAssets as assetType[];
   }
 
-  async one({ asset_code, value }: assetType) {
-    const Assets = await FinanceAssetRepository.findOneBy({ asset_code });    return Assets as assetType;
+  async one(asset_code: number) {
+    const Assets = await FinanceAssetRepository.findOneBy({ asset_code });
+    return Assets as assetType;
   }
 
   async autoUpdate({asset_code, value}: assetType) {
