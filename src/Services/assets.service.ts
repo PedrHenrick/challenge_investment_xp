@@ -23,14 +23,12 @@ export class AssetsService {
       return allAssetsSerialized;
   }
 
-  async one() {
+  async one(codAtivo: number) {
     const assetsInstance = new AssetsModel();
-    const allAssets = await assetsInstance.all();
+    const asset = await assetsInstance.one(codAtivo);
 
-    const allAssetsSerialized = allAssets
-      .map((asset) => Serialize(asset));
-    
-      return allAssetsSerialized;
+    if (!asset) throw new Error('Asset is not exists');
+    return asset;
   }
 
   async autoUpdate() {
