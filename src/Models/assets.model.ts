@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import ErrorHandle from "../Class/error";
 import { FinanceAssetRepository } from "../Database/Repositores/FinanceAsset.repository";
-import { assetType } from "../Types/Assets.type";
+import { assetType } from "../Types/Asset.type";
 
 export class AssetsModel {
   async all() {
