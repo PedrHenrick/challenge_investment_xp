@@ -23,6 +23,16 @@ export class AssetsService {
       return allAssetsSerialized;
   }
 
+  async one() {
+    const assetsInstance = new AssetsModel();
+    const allAssets = await assetsInstance.all();
+
+    const allAssetsSerialized = allAssets
+      .map((asset) => Serialize(asset));
+    
+      return allAssetsSerialized;
+  }
+
   async autoUpdate() {
     const assetsInstance = new AssetsModel();
     const allAssets = await assetsInstance.all();
