@@ -6,6 +6,8 @@ import ErrorHandle from '../Class/error';
 const schemaTransation = joi.object({
   CodCliente: joi.number().min(1).required(),
   Valor: joi.number().min(1).required(),
+}).messages({
+  "*": "Transaction denied",
 });
 
 const validateSchemaTransation = (req: Request, _res: Response, next: NextFunction) => {
