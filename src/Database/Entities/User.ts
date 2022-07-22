@@ -15,10 +15,10 @@ export class User {
   @Column({ type: 'varchar', unique: true })
   email: string;
 
-  @Column({ type: 'varchar', unique: true })
+  @Column({ type: 'varchar' })
   password: string;
   
-  @Column({ type: 'decimal' })
+  @Column({ type: 'decimal', default: 0 })
   balance: number;
 
   @ManyToMany(() => FinanceAsset, financeAsset => financeAsset.user)
