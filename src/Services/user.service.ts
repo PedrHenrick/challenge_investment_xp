@@ -5,7 +5,7 @@ import { UserModel } from '../Models/user.model';
 
 export class UserService {
   async getBalance(userLogged: any, codCliente: number) {
-    if (userLogged.client_code !== codCliente) {
+    if (Number(userLogged.client_code) !== Number(codCliente)) {
       throw new ErrorHandle(StatusCodes.UNAUTHORIZED, 'User is not permission')
     }
 
@@ -23,7 +23,7 @@ export class UserService {
   }
 
   async addWithdraw(userLogged: any, informationWithdraw: any, ) {
-    if (userLogged.client_code !== informationWithdraw.CodCliente) {
+    if (Number(userLogged.client_code) !== Number(informationWithdraw.CodCliente)) {
       throw new ErrorHandle(StatusCodes.UNAUTHORIZED, 'User is not permission')
     }
     
@@ -34,19 +34,34 @@ export class UserService {
       throw new ErrorHandle(StatusCodes.INTERNAL_SERVER_ERROR, "Internal error contact support")
     }
 
-    if(
-        (Number(user.balance) - informationWithdraw.Valor) < 0
-        || typeof informationWithdraw.Valor !== 'number'
-      ) {
+    if((Number(user.balance) - Number(informationWithdraw.Valor)) < 0) {
       throw new ErrorHandle(StatusCodes.UNAUTHORIZED, "Transaction denied")
     }
 
-    user.balance = Number(user.balance) - informationWithdraw.Valor;
+    user.balance = Number(user.balance) - Number(informationWithdraw.Valor);
     
     console.log(user.balance);
 
     await UserRepository.save(user);
     
     return "Saque realizado com sucesso!"
+  }
+
+  async addDeposit(userLogged: any, informationWithdraw: any, ) {
+    if (Number(userLogged.client_code) !== Number(informationWithdraw.CodCliente)) {
+      throw new ErrorHandle(StatusCodes.UNAUTHORIZED, 'User is not permission')
+    }
+    
+    const userModel = new UserModel().one; 
+    const user = await userModel(informationWithdraw.CodCliente);
+    
+    if(!user) {
+      throw new ErrorHandle(StatusCodes.INTERNAL_SERVER_ERROR, "Internal error contact support")
+    }
+
+    user.balance = Number(user.balance) + Number(informationWithdraw.Valor);
+    await UserRepository.save(user);
+    
+    return "Depósito realizado com sucesso!"
   }
 }
