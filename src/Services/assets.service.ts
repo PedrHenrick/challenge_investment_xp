@@ -1,3 +1,5 @@
+import { StatusCodes } from "http-status-codes";
+import ErrorHandle from "../Class/error";
 import { AssetsModel } from "../Models/assets.model";
 import { assetType } from "../Types/Assets.type";
 import getRandomInt from "../utils/getRandomInt";
@@ -27,7 +29,7 @@ export class AssetsService {
     const assetsInstance = new AssetsModel();
     const asset = await assetsInstance.one(codAtivo);
 
-    if (!asset) throw new Error('Asset is not exists');
+    if (!asset) throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'Asset is not exists');
     return asset;
   }
 
