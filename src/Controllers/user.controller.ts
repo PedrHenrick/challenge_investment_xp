@@ -15,4 +15,14 @@ export class UserController {
 
     return response.status(StatusCodes.CREATED).json(userBalance);
   }
+
+  async addWithdraw(request: Request, response: Response): Promise<Response> {
+    const token = request.headers.authorization || '';
+    const userLogged = await authenticateToken(token);
+    
+    const userService = new UserService().addWithdraw;
+    const transationResult = await userService(userLogged, request.body);
+
+    return response.status(StatusCodes.CREATED).json({ message: transationResult });
+  }
 };
