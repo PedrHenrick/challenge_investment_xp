@@ -30,7 +30,9 @@ export class AssetsService {
     const asset = await assetsInstance.one(codAtivo);
 
     if (!asset) throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'Asset is not exists');
-    return asset;
+    
+    const assetSerialized = Serialize(asset);
+    return assetSerialized;
   }
 
   async autoUpdate() {
