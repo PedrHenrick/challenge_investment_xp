@@ -3,7 +3,7 @@ import jwt, { SignOptions } from 'jsonwebtoken';
 import ErrorHandle from '../Class/error';
 import { userType } from '../Types/User.type';
 
-const SECRET = process.env.JWT_SECRET || 'bananinhaDePijaminha';
+const SECRET = process.env.JWT_SECRET || '96e2c84bf0244e7f8e4075b11ec81929';
 
 const jwtConfig: SignOptions = {
   algorithm: 'HS256',
