@@ -5,6 +5,7 @@ import validateSchemaTransation from '../Middlewares/transationValidate.middewar
 const userRouter = Router();
 
 userRouter.get('/:codCliente/saldo', new UserController().getBalance);
+userRouter.get('/:codCliente/ativos', new UserController().getAssets);
 userRouter.post(
   '/saque',
   validateSchemaTransation,
