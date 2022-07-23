@@ -16,7 +16,7 @@ export class FinanceAsset {
   name: string;
   
   @Column({ type: 'decimal' })
-  value: number;
+  unit_value: number;
 
   @Column({ type: 'integer' })
   amount_assets: number;

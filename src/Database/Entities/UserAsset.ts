@@ -1,4 +1,5 @@
 import {
+  Column,
   Entity,
   PrimaryGeneratedColumn,
 } from "typeorm";
@@ -10,4 +11,11 @@ export class UserAsset {
 
   @PrimaryGeneratedColumn({ type: 'integer' })
   asset_code: number;
+
+  @Column({ type: 'integer' })
+  amount_asset: number;
+
+  @Column({ type: 'decimal' })
+  unit_value: number;
+
 }
