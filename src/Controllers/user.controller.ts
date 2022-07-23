@@ -13,7 +13,19 @@ export class UserController {
     const userService = new UserService().getBalance;
     const userBalance = await userService(userLogged, Number(codCliente));
 
-    return response.status(StatusCodes.CREATED).json(userBalance);
+    return response.status(StatusCodes.OK).json(userBalance);
+  }
+
+  async getAssets(request: Request, response: Response): Promise<Response> {
+    const token = request.headers.authorization || '';
+    const userLogged = await authenticateToken(token);
+    
+    const { codCliente } = request.params
+    
+    const userService = new UserService().getAssets;
+    const userAssets = await userService(userLogged, Number(codCliente));
+
+    return response.status(StatusCodes.OK).json(userAssets);
   }
 
   async addWithdraw(request: Request, response: Response): Promise<Response> {
