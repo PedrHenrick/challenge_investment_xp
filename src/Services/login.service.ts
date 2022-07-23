@@ -1,12 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorHandle from '../Class/error';
 import { UserRepository } from '../Database/Repositores/User.repository';
-import { logintype } from '../Types/Login.type';
+import { loginType } from '../Types/Login.type';
 import { generateJWTToken } from '../utils/JWTToken';
 import  bcrypt from 'bcrypt-nodejs';
 
 export class LoginService {
-  async authenticate ({ email, password }: logintype) {
+  async authenticate ({ email, password }: loginType) {
     const user = await UserRepository.findOneBy({ email });
 
     if (!user) {
