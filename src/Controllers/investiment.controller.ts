@@ -12,4 +12,13 @@ export class InvestimentController {
     const buyMade = await investimentService(userLogged, request.body);
     return response.status(StatusCodes.CREATED).json({ message: buyMade });
   }
+
+  async sale(request: Request, response: Response): Promise<Response> {
+    const token = request.headers.authorization || '';
+    const userLogged = await authenticateToken(token);
+
+    const investimentService = new InvestimentService().sale;
+    const saleMade = await investimentService(userLogged, request.body);
+    return response.status(StatusCodes.CREATED).json({ message: saleMade });
+  }
 };
