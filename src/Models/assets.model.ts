@@ -14,12 +14,12 @@ export class AssetsModel {
     return Assets as assetType;
   }
 
-  async autoUpdate({asset_code, value}: assetType) {
+  async autoUpdate({asset_code, unit_value}: assetType) {
     const Assets = await FinanceAssetRepository.findOneBy({ asset_code });
 
     if (!Assets) throw new ErrorHandle(StatusCodes.BAD_REQUEST,'Assets deleted of database');
 
-    Assets.value = value ? value : Assets.value;
+    Assets.unit_value = unit_value ? unit_value : Assets.unit_value;
     
     return FinanceAssetRepository.save(Assets);
   }

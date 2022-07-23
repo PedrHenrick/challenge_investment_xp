@@ -9,7 +9,7 @@ const Serialize = (assets: assetType) => {
     codAtivo: assets.asset_code,
     NomeAtivo: assets.name,
     QtdeAtivo: assets.amount_assets,
-    Valor: assets.value,
+    Valor: assets.unit_value,
   };
   return assetsSerialized;
 }
@@ -42,23 +42,23 @@ export class AssetsService {
     Promise.all<any>(allAssets.map(async (assets) => {
       switch (getRandomInt(1, 3)) {
         case 1:
-          assets.value += (assets.value * (getRandomInt(1, 1) / 100));
+          assets.unit_value += (assets.unit_value * (getRandomInt(1, 1) / 100));
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            value: assets.value,
+            unit_value: assets.unit_value,
           });
           break;
         case 2:
-          assets.value -= (assets.value * (getRandomInt(1, 3) / 100));
+          assets.unit_value -= (assets.unit_value * (getRandomInt(1, 3) / 100));
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            value: assets.value,
+            unit_value: assets.unit_value,
           });
           break;
         default:
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            value: assets.value,
+            unit_value: assets.unit_value,
           });
       }
     }));

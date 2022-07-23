@@ -20,18 +20,4 @@ export class User {
   
   @Column({ type: 'decimal', default: 0 })
   balance: number;
-
-  @ManyToMany(() => FinanceAsset, financeAsset => financeAsset.user)
-  @JoinTable({
-    name: 'users_assets',
-    joinColumn: {
-      name: 'client_code',
-      referencedColumnName: 'client_code'
-    },
-    inverseJoinColumn: {
-      name: 'asset_code',
-      referencedColumnName: 'asset_code',
-    }
-  })
-  financeAsset: FinanceAsset[]
 }

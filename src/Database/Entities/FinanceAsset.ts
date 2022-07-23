@@ -20,7 +20,4 @@ export class FinanceAsset {
 
   @Column({ type: 'integer' })
   amount_assets: number;
-
-  @ManyToMany(() => User, user => user.financeAsset)
-  user: User[]
 }
