@@ -1,7 +1,19 @@
 import { StatusCodes } from 'http-status-codes';
 import ErrorHandle from '../Class/error';
 import { UserRepository } from '../Database/Repositores/User.repository';
+import { InvestimentModel } from '../Models/investiment.model';
 import { UserModel } from '../Models/user.model';
+import { userAssetType } from '../Types/UserAsset.type';
+
+const SerializeUserAssets = (userAsset: userAssetType) => {
+  const userAssetsSerialized = {
+    CodCliente: userAsset.client_code,
+    CodAtivo: userAsset.asset_code,
+    QtdeAtivo: userAsset.amount_asset,
+    Valor: userAsset.unit_value,
+  };
+  return userAssetsSerialized;
+}
 
 export class UserService {
   async getBalance(userLogged: any, codCliente: number) {
@@ -22,7 +34,32 @@ export class UserService {
     };
   }
 
-  async addWithdraw(userLogged: any, informationWithdraw: any, ) {
+  async getAssets(userLogged: any, codCliente: number) {
+    if (Number(userLogged.client_code) !== Number(codCliente)) {
+      throw new ErrorHandle(StatusCodes.UNAUTHORIZED, 'User is not permission')
+    }
+
+    const userModel = new UserModel().one; 
+    const user = await userModel(codCliente);
+
+    if(!user) {
+      throw new ErrorHandle(StatusCodes.INTERNAL_SERVER_ERROR, "Internal error contact support")
+    }
+
+    const investimentModel = new InvestimentModel().getUserAsset; 
+    const userAssets = await investimentModel(codCliente);
+
+    if(!userAssets) {
+      throw new ErrorHandle(StatusCodes.BAD_REQUEST, "The User does not have any shares purchased")
+    }
+
+    const userAssetsSerialized = userAssets
+      .map((userAsset) => SerializeUserAssets(userAsset));
+    
+    return userAssetsSerialized;
+  }
+
+  async addWithdraw(userLogged: any, informationWithdraw: any) {
     if (Number(userLogged.client_code) !== Number(informationWithdraw.CodCliente)) {
       throw new ErrorHandle(StatusCodes.UNAUTHORIZED, 'User is not permission')
     }
@@ -45,7 +82,7 @@ export class UserService {
     return "Saque realizado com sucesso!"
   }
 
-  async addDeposit(userLogged: any, informationWithdraw: any, ) {
+  async addDeposit(userLogged: any, informationWithdraw: any) {
     if (Number(userLogged.client_code) !== Number(informationWithdraw.CodCliente)) {
       throw new ErrorHandle(StatusCodes.UNAUTHORIZED, 'User is not permission')
     }
