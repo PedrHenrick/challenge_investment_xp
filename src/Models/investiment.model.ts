@@ -5,6 +5,11 @@ export class InvestimentModel {
     const assetExisting = await UserAssetRepository.find({ where: { client_code, asset_code } });
     return UserAssetRepository.save(assetExisting);
   }
+
+  async getUserAsset(client_code: number) {
+    const assetExisting = await UserAssetRepository.find({ where: { client_code } });
+    return UserAssetRepository.save(assetExisting);
+  }
   
   async add(buyInformations: any) {
     const userAsset = UserAssetRepository.create(buyInformations);
