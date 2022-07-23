@@ -56,8 +56,6 @@ export class InvestimentService {
     const hasUserAssets: Array<any> = await userAssetInstance
       .one(purchaseInformations.codCliente, purchaseInformations.codAtivo);
 
-    console.log(hasUserAssets[0]);
-
     if(!hasUserAssets[0]) await userAssetInstance.add(buyInformations);
     else {
       hasUserAssets[0].amount_asset = Number(hasUserAssets[0].amount_asset) 
@@ -66,5 +64,52 @@ export class InvestimentService {
       await UserAssetRepository.save(hasUserAssets[0]);
     }
     return "Compra concluída com sucesso"
+  }
+
+  async sale( userLogged: any, saleInformations: investimentType) {
+    if (Number(userLogged.client_code) !== Number(saleInformations.codCliente)) {
+      throw new ErrorHandle(StatusCodes.UNAUTHORIZED, 'User is not permission')
+    }
+
+    const userInstance = new UserModel().one;
+    const user = await userInstance(Number(saleInformations.codCliente));
+
+    if(!user) {
+      throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'Client is not exists');
+    }
+    
+    const assetInstance = new AssetsModel().one;
+    const asset = await assetInstance(Number(saleInformations.codAtivo));
+  
+    if(!asset) {
+      throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'Asset is not exists');
+    }
+
+    const userAssetInstance = new InvestimentModel();
+    const hasUserAssets: Array<any> = await userAssetInstance
+    .one(saleInformations.codCliente, saleInformations.codAtivo);
+
+    if(!hasUserAssets[0]) {
+      throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'You do not have this asset in your wallet');
+    }
+
+    if(Number(saleInformations.qtdeAtivo) > Number(hasUserAssets[0].amount_asset)) {
+      throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'You cannot sell more than you have in your wallet');
+    }
+
+    user.balance = Number(user.balance) + (Number(saleInformations.qtdeAtivo) * Number(asset.unit_value));
+    await UserRepository.save(user);
+    asset.amount_assets = Number(asset.amount_assets) + Number(saleInformations.qtdeAtivo);
+    await FinanceAssetRepository.save(asset);
+
+    if((Number(hasUserAssets[0].amount_asset) - Number(saleInformations.qtdeAtivo)) === 0) {
+      await UserAssetRepository.delete(hasUserAssets[0]);
+    } else {
+      hasUserAssets[0].amount_asset = Number(hasUserAssets[0].amount_asset) 
+        - Number(saleInformations.qtdeAtivo)
+      await UserAssetRepository.save(hasUserAssets[0]);
+    }
+
+    return "Venda concluída com sucesso"
   }
 }
