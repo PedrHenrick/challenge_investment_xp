@@ -10,7 +10,7 @@ import validateSchemaInvestiment from '../Middlewares/investimentValidate.middew
 
 const router = express.Router();
 
-router.use('/ativos', authenticate, assertRouter);
+router.use('/ativos', assertRouter);
 router.use('/cliente', authenticate, userRouter);
 router.use('/login', validateSchemaLogin, loginRouter)
 router.use('/cadastro', validateSchemaLogin, registrationRouter);

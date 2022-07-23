@@ -17,6 +17,6 @@ AppDataSource.initialize().then(() => {
 
   return app.listen(PORT, () => {
     console.log(`Server is running in ${ PORT }`);
-    // startCron.run();
+    startCron.run();
   });
 });

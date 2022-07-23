@@ -42,23 +42,25 @@ export class AssetsService {
     Promise.all<any>(allAssets.map(async (assets) => {
       switch (getRandomInt(1, 3)) {
         case 1:
-          assets.unit_value += (assets.unit_value * (getRandomInt(1, 1) / 100));
+          assets.unit_value = Number(assets.unit_value)
+            + (Number(assets.unit_value) * (getRandomInt(1, 1) / 100));
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            unit_value: assets.unit_value,
+            unit_value: Number((assets.unit_value).toFixed(2)),
           });
           break;
         case 2:
-          assets.unit_value -= (assets.unit_value * (getRandomInt(1, 3) / 100));
+          assets.unit_value = Number(assets.unit_value)
+            - (Number(assets.unit_value) * (getRandomInt(1, 1) / 100));
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            unit_value: assets.unit_value,
+            unit_value: Number((assets.unit_value).toFixed(2)),
           });
           break;
         default:
           await assetsInstance.autoUpdate({
             asset_code: assets.asset_code,
-            unit_value: assets.unit_value,
+            unit_value: Number((assets.unit_value).toFixed(2)),
           });
       }
     }));
