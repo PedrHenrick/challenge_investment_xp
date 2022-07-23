@@ -40,8 +40,6 @@ export class UserService {
 
     user.balance = Number(user.balance) - Number(informationWithdraw.Valor);
     
-    console.log(user.balance);
-
     await UserRepository.save(user);
     
     return "Saque realizado com sucesso!"

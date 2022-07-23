@@ -1,10 +1,10 @@
+import { AppDataSource } from './Database/data-source';
 import express from 'express';
 import 'express-async-errors';
-import { AppDataSource } from './Database/data-source';
 import cors from 'cors'
-import startCron from './cron/start-cron';
 import { router } from './Routes/router';
 import ErrorMiddleware from './Middlewares/error.middleware';
+import startCron from './cron/start-cron';
 
 AppDataSource.initialize().then(() => {
   const PORT = process.env.PORT || 3000;
