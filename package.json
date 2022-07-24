@@ -1,9 +1,9 @@
 {
-  "name": "simulation_b3_database",
+  "name": "challenge_investment_xp",
   "version": "1.0.0",
   "main": "index.js",
   "type": "commonjs",
-  "repository": "git@github.com:PedrHenrick/simulation_b3_database.git",
+  "repository": "git@github.com:PedrHenrick/challenge_investment_xp.git",
   "author": "Pedro Mesquita <pedro.mesquita.hc@gmail.com>",
   "license": "MIT",
   "dependencies": {
