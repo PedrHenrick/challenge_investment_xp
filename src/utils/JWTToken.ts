@@ -10,8 +10,10 @@ const jwtConfig: SignOptions = {
   noTimestamp: true,
 };
 
-export const generateJWTToken = (payload: userType) => 
-  jwt.sign(payload, SECRET, jwtConfig);
+export const generateJWTToken = async (payload: userType) => {
+  const token = await jwt.sign(payload, SECRET, jwtConfig);
+  return `Barer ${token}`;
+} 
 
 export const authenticateToken = async (token: string) => {
   try {
