@@ -1,24 +1,25 @@
 import { StatusCodes } from "http-status-codes";
 import { ErrorHandle } from "../Class/error";
 import { AssetsModel } from "../Models/assets.model";
+import { assetType } from "../Types/Asset.type";
 import getRandomInt from "../utils/getRandomInt";
 import { SerializeAssets } from "../utils/Serialize";
 
 export class AssetsService {
-  async getAllAssets() {
+  async getAllAssets(): Promise<Array<Object>> {
     const assetsInstance = new AssetsModel();
     const allAssets = await assetsInstance.getAllAssets();
 
     const allAssetsSerialized = allAssets
-      .map((asset) => SerializeAssets(asset));
+      .map((asset: assetType) => SerializeAssets(asset));
     return allAssetsSerialized;
   }
 
-  async autoUpdateValues() {
+  async autoUpdateValues(): Promise<string> {
     const assetsInstance = new AssetsModel();
     const allAssets = await assetsInstance.getAllAssets();
 
-    await Promise.all<any>(allAssets.map(async (assets) => {
+    await Promise.all<any>(allAssets.map(async (assets: assetType) => {
       switch (getRandomInt(1, 4)) {
         case 1:
           assets.unit_value = Number(
@@ -47,7 +48,7 @@ export class AssetsService {
     return 'Atualizado';
   };
 
-  async getOneAsset(codAtivo: number) {
+  async getOneAsset(codAtivo: number): Promise<Object> {
     const assetsInstance = new AssetsModel();
     const asset = await assetsInstance.getOneAsset(codAtivo);
 

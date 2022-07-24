@@ -8,7 +8,7 @@ import { SerializeForAddUserAssets } from "../utils/Serialize";
 import { userAssetType } from "../Types/UserAsset.type";
 
 export class InvestimentService {
-  async buy( userLogged: any, purchaseInformations: investimentType) {
+  async buy(userLogged: any, purchaseInformations: investimentType): Promise<string> {
     const clientModelInstance = new ClientModel;
     const user = await clientModelInstance.getOneUser(Number(userLogged.client_code));
     const assetInstance = new AssetsModel;
@@ -58,7 +58,7 @@ export class InvestimentService {
     return "Compra concluída com sucesso"
   }
 
-  async sale( userLogged: any, saleInformations: investimentType) {
+  async sale( userLogged: any, saleInformations: investimentType): Promise<string> {
     const clientModelInstance = new ClientModel;
     const user = await clientModelInstance.getOneUser(Number(userLogged.client_code));
     const assetInstance = new AssetsModel();

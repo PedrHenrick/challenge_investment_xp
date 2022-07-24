@@ -5,13 +5,13 @@ import { ClientModel } from '../Models/client.model';
 import { SerializeForGetUserAssets } from '../utils/Serialize';
 
 export class ClientService {
-  async getBalance(clientLogged: any) {
+  async getBalance(clientLogged: any): Promise<Object> {
     const clientModelInstance = new ClientModel().getOneUser; 
     const user = await clientModelInstance(clientLogged.client_code);
-    return { Saldo: user.balance };
+    return { saldo: user.balance };
   }
 
-  async getAssets(clientLogged: any) {
+  async getAssets(clientLogged: any): Promise<Array<Object>> {
     const investimentModel = new InvestimentModel().getUserAsset; 
     const userAssets = await investimentModel(clientLogged.client_code);
 
@@ -25,7 +25,7 @@ export class ClientService {
     return userAssetsSerialized;
   }
 
-  async addWithdraw(clientLogged: any, informationWithdraw: any) {    
+  async addWithdraw(clientLogged: any, informationWithdraw: any): Promise<string> {    
     const clientModelInstance = new ClientModel; 
     const user = await clientModelInstance.getOneUser(clientLogged.client_code);
 
@@ -38,7 +38,7 @@ export class ClientService {
     return "Saque realizado com sucesso!"
   }
 
-  async addDeposit(clientLogged: any, informationWithdraw: any) {
+  async addDeposit(clientLogged: any, informationWithdraw: any): Promise<string> {
     const clientModelInstance = new ClientModel; 
     const user = await clientModelInstance.getOneUser(clientLogged.client_code);
 

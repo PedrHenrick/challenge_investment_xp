@@ -7,7 +7,7 @@ import  bcrypt from 'bcrypt-nodejs';
 import { AccessModel } from '../Models/access.model';
 
 export class AccessService {
-  async authenticate ({ email, password }: AcessType) {
+  async authenticate ({ email, password }: AcessType): Promise<string> {
     const user = await UserRepository.findOneBy({ email });
 
     if (!user) {
@@ -28,7 +28,7 @@ export class AccessService {
     return token;
   }
 
-  async addNewUser({ email, password, fullName }: AcessType) {
+  async addNewUser({ email, password, fullName }: AcessType): Promise<string> {
     const hasUser = await UserRepository.findOneBy({
       email,
     });
