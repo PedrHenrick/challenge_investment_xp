@@ -3,22 +3,22 @@ import { AssetsService } from "../Services/assets.service";
 import { StatusCodes } from 'http-status-codes';
 
 export class AssetsController {
-  async all(_request: Request, response: Response): Promise<Response> {
+  async getAllAssets(_request: Request, response: Response): Promise<Response> {
     const assetsInstance = new AssetsService();
-    const allAssets = await assetsInstance.all();
+    const allAssets = await assetsInstance.getAllAssets();
     return response.status(StatusCodes.OK).json(allAssets);
   };
-
-  async one(request: Request, response: Response): Promise<Response> {
+  
+  async autoUpdateValues(_request: Request, response: Response): Promise<Response> {
     const assetsInstance = new AssetsService();
-    const { codAtivo } = request.params;
-    const asset = await assetsInstance.one(Number(codAtivo));
-    return response.status(StatusCodes.OK).json(asset);
+    const ActualizationMessage = await assetsInstance.autoUpdateValues();
+    return response.status(StatusCodes.OK).json(ActualizationMessage);
   }
 
-  async autoUpdate(_request: Request, response: Response): Promise<Response> {
+  async getOneAsset(request: Request, response: Response): Promise<Response> {
     const assetsInstance = new AssetsService();
-    const ActualizationMessage = await assetsInstance.autoUpdate();
-    return response.status(StatusCodes.OK).json(ActualizationMessage);
+    const { codAtivo } = request.params;
+    const asset = await assetsInstance.getOneAsset(Number(codAtivo));
+    return response.status(StatusCodes.OK).json(asset);
   }
 }

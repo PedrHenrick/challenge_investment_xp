@@ -4,8 +4,8 @@ import { authenticateMiddleware } from '../Middlewares/auth.middleware';
 
 const assertRouter = Router();
 
-assertRouter.get('/', authenticateMiddleware, new AssetsController().all);
-assertRouter.get('/update',  new AssetsController().autoUpdate);
-assertRouter.get('/:codAtivo', authenticateMiddleware, new AssetsController().one);
+assertRouter.get('/', authenticateMiddleware, new AssetsController().getAllAssets);
+assertRouter.get('/update',  new AssetsController().autoUpdateValues);
+assertRouter.get('/:codAtivo', authenticateMiddleware, new AssetsController().getOneAsset);
 
 export { assertRouter };
