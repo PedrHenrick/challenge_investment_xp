@@ -29,11 +29,11 @@ export class ClientService {
     const clientModelInstance = new ClientModel; 
     const user = await clientModelInstance.getOneUser(clientLogged.client_code);
 
-    if((Number(user.balance) - Number(informationWithdraw.Valor)) < 0) {
+    if((Number(user.balance) - Number(informationWithdraw.valor)) < 0) {
       throw new ErrorHandle(StatusCodes.UNAUTHORIZED, "Insufficient funds")
     }
 
-    user.balance = Number(user.balance) - Number(informationWithdraw.Valor);
+    user.balance = Number(user.balance) - Number(informationWithdraw.valor);
     await clientModelInstance.updateInformations(user);
     return "Saque realizado com sucesso!"
   }
@@ -42,7 +42,7 @@ export class ClientService {
     const clientModelInstance = new ClientModel; 
     const user = await clientModelInstance.getOneUser(clientLogged.client_code);
 
-    user.balance = Number(user.balance) + Number(informationWithdraw.Valor);
+    user.balance = Number(user.balance) + Number(informationWithdraw.valor);
     await clientModelInstance.updateInformations(user);
     return "Depósito realizado com sucesso!"
   }

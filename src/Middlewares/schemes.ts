@@ -1,7 +1,7 @@
 import joi from "joi";
 
 export const transationSchema = joi.object({
-  Valor: joi.number().min(1).required(),
+  valor: joi.number().min(1).required(),
 }).messages({
   "*": "Transaction denied",
 });

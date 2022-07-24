@@ -7,7 +7,7 @@ export const SerializeAssets = (assets: assetType) => {
     codAtivo: assets.asset_code,
     NomeAtivo: assets.name,
     QtdeAtivo: assets.amount_assets,
-    Valor: assets.unit_value,
+    valorUnit: assets.unit_value,
   };
 };
 
@@ -15,7 +15,7 @@ export const SerializeForGetUserAssets = (userAsset: userAssetType) => {
   return {
     CodAtivo: userAsset.asset_code,
     QtdeAtivo: userAsset.amount_asset,
-    Valor: userAsset.unit_value,
+    valorUnit: userAsset.unit_value,
   };
 };
 
