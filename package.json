@@ -41,5 +41,9 @@
     "dev": "nodemon --exec ts-node --transpile-only ./src/server.ts",
     "migration:generate": "typeorm-ts-node-commonjs -d ./src/Database/data-source.ts migration:generate ./src/Database/Migrations/default",
     "migration:run": "typeorm-ts-node-commonjs -d ./src/Database/data-source.ts migration:run"
+  },
+  "devDependencies": {
+    "@types/swagger-jsdoc": "^6.0.1",
+    "@types/swagger-ui-express": "^4.1.3"
   }
 }
