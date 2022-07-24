@@ -3,16 +3,20 @@ import { assertRouter } from './assertRouter';
 import { userRouter } from './userRouter';
 import { accessRouter } from './accessRouter';
 import { investimentRouter } from './investmentRouter';
-import authenticate from '../Middlewares/auth.middleware';
-import validateSchemaInvestiment from '../Middlewares/investimentValidate.middeware';
+import { authenticateMiddleware } from '../Middlewares/auth.middleware';
+import { validateMiddleware } from '../Middlewares/validate.middleware';
+import { investimentSchema } from '../Middlewares/schemes';
 
 const router = express.Router();
 
-router.use('/ativos', assertRouter);
-router.use('/cliente', authenticate, userRouter);
-router.use('/investimentos', authenticate, validateSchemaInvestiment, investimentRouter);
 router.use('/acessar', accessRouter);
-
-
+router.use('/ativos', assertRouter);
+router.use('/cliente', authenticateMiddleware, userRouter);
+router.use(
+  '/investimentos',
+  authenticateMiddleware,
+  validateMiddleware(investimentSchema),
+  investimentRouter
+);
 
 export { router };

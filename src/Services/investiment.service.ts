@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import ErrorHandle from "../Class/error";
+import { ErrorHandle } from "../Class/error";
 import { FinanceAssetRepository } from "../Database/Repositores/FinanceAsset.repository";
 import { UserRepository } from "../Database/Repositores/User.repository";
 import { UserAssetRepository } from "../Database/Repositores/UserAsset.repository";

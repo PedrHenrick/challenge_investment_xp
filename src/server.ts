@@ -5,7 +5,7 @@ import cors from 'cors'
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express'
 import { router } from './Routes/router';
-import ErrorMiddleware from './Middlewares/error.middleware';
+import { ErrorMiddleware } from './Middlewares/error.middleware';
 import startCron from './cron/start-cron';
 import { swaggerConfig } from './docs/swagger.config';
 

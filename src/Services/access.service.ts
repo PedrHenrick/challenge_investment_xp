@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import ErrorHandle from '../Class/error';
+import { ErrorHandle } from '../Class/error';
 import { UserRepository } from '../Database/Repositores/User.repository';
 import { AcessType } from '../Types/Acess.type';
 import { generateJWTToken } from '../utils/JWTToken';

@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import ErrorHandle from "../Class/error";
+import { ErrorHandle } from "../Class/error";
 import { AssetsModel } from "../Models/assets.model";
 import { assetType } from "../Types/Asset.type";
 import getRandomInt from "../utils/getRandomInt";

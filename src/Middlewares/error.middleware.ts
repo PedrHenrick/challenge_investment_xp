@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import ErrorHandle from '../Class/error';
+import { ErrorHandle } from '../Class/error';
 import { StatusCodes } from 'http-status-codes';
 
-const ErrorMiddleware = (
+export const ErrorMiddleware = (
   err: Error,
   _req: Request,
   res: Response,
@@ -12,5 +12,3 @@ const ErrorMiddleware = (
   res.status(status || StatusCodes.INTERNAL_SERVER_ERROR)
     .json({ message } || 'Erro interno');
 };
-
-export default ErrorMiddleware;

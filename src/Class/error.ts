@@ -1,4 +1,4 @@
-class ErrorHandle extends Error {
+export class ErrorHandle extends Error {
   status: number;
 
   message: string;
@@ -9,5 +9,3 @@ class ErrorHandle extends Error {
     this.message = message;
   }
 }
-
-export default ErrorHandle;
