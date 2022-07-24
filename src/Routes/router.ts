@@ -99,12 +99,12 @@ export { router };
  *      Transacoes:
  *        type: object
  *        required:
- *          - Valor
+ *          - valor
  *        properties:
- *          Valor:
+ *          valor:
  *            type: number
  *        example:
- *          Valor: 10000
+ *          valor: 10000
  */
 
 /**
