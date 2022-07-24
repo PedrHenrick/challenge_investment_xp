@@ -20,12 +20,13 @@ export class AssetsService {
     const allAssets = await assetsInstance.getAllAssets();
 
     await Promise.all<any>(allAssets.map(async (assets) => {
-      switch (getRandomInt(1, 3)) {
+      switch (getRandomInt(1, 4)) {
         case 1:
           assets.unit_value = Number(
             (Number(assets.unit_value) 
-            + (Number(assets.unit_value) 
-            * (getRandomInt(1, 2) / 100))
+            + (
+              Number(assets.unit_value) * (getRandomInt(1, 3) / 100)
+            )
             ).toFixed(2)
           );
           await assetsInstance.updateInformations(assets);
@@ -33,14 +34,15 @@ export class AssetsService {
         case 2:
           assets.unit_value = Number(
             (Number(assets.unit_value) 
-            + (Number(assets.unit_value) 
-            * (getRandomInt(1, 2) / 100))
+            - (
+              Number(assets.unit_value) * (getRandomInt(1, 3) / 100)
+            )
             ).toFixed(2)
           );
           await assetsInstance.updateInformations(assets);
           break;
         default:
-          console.log('sem alterações');
+          break;
       }
     }));
     return 'Atualizado';
