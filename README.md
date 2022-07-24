@@ -360,9 +360,7 @@ Para a evolução o projeto, fica claro algumas modificações que devem serem f
 - [ ]  Adicionar testes unitários
 - [ ]  Adicionar testes de integração
 - [ ]  Melhorar lógica de recompra de ativos, ou seja, quando um cliente compra um ativo mais de uma vez, pois que os valores se modificam aleatóriamente e a primeira compra pode não ter o mesmo valor da segunda, gerando uma compra extra de ações, com dois valores. Na aplicação aleta somente a quantidade, nas vendas é pego o valor atual, mas na tabela que mostra as compras consta somente o primeiro valor.
-- [ ]  Melhorar tipagem com typescript
 - [ ]  Aplicar o SOLID
-- [ ]  Melhorar estrutura das classes
 
 ---
 
