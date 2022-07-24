@@ -28,7 +28,7 @@ export class AccessService {
     return token;
   }
 
-  async addNewUser({ email, password }: AcessType) {
+  async addNewUser({ email, password, fullName }: AcessType) {
     const hasUser = await UserRepository.findOneBy({
       email,
     });
@@ -39,7 +39,7 @@ export class AccessService {
     password = bcrypt.hashSync(password, salt);
     
     const userModel = new AccessModel().addNewUser;
-    const userCreated = await userModel({ email, password });
+    const userCreated = await userModel({ email, password, fullName });
 
     const token = generateJWTToken({
       client_code: userCreated.client_code,

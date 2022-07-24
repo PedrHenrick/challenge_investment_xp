@@ -1,8 +1,5 @@
 import { StatusCodes } from "http-status-codes";
 import { ErrorHandle } from "../Class/error";
-import { FinanceAssetRepository } from "../Database/Repositores/FinanceAsset.repository";
-import { UserRepository } from "../Database/Repositores/User.repository";
-import { UserAssetRepository } from "../Database/Repositores/UserAsset.repository";
 import { AssetsModel } from "../Models/assets.model";
 import { InvestimentModel } from "../Models/investiment.model";
 import { ClientModel } from "../Models/client.model";
@@ -34,8 +31,8 @@ export class InvestimentService {
       throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'Insufficient balance for purchase');
     }
 
-    user.balance = Number(user.balance) 
-    - (Number(purchaseInformations.qtdeAtivo) * Number(asset.unit_value));
+    user.balance = Number((Number(user.balance) 
+    - (Number(purchaseInformations.qtdeAtivo) * Number(asset.unit_value))).toFixed(2));
     await clientModelInstance.updateInformations(user)
 
     asset.amount_assets = Number(asset.amount_assets)
@@ -56,7 +53,7 @@ export class InvestimentService {
     else {
       hasUserAssets[0].amount_asset = Number(hasUserAssets[0].amount_asset) 
         + Number(purchaseInformations.qtdeAtivo)
-      await assetInstance.updateInformations(hasUserAssets[0]);
+      await userAssetInstance.updateInformations(hasUserAssets[0]);
     }
     return "Compra concluída com sucesso"
   }
@@ -84,7 +81,8 @@ export class InvestimentService {
       throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'You cannot sell more than you have in your wallet');
     }
 
-    user.balance = Number(user.balance) + (Number(saleInformations.qtdeAtivo) * Number(asset.unit_value));
+    user.balance = Number((Number(user.balance) 
+    + (Number(saleInformations.qtdeAtivo) * Number(asset.unit_value))).toFixed(2));
     await clientModelInstance.updateInformations(user);
     asset.amount_assets = Number(asset.amount_assets) + Number(saleInformations.qtdeAtivo);
     await assetInstance.updateInformations(asset);

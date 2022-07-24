@@ -1,9 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 import { ErrorHandle } from '../Class/error';
-import { UserRepository } from '../Database/Repositores/User.repository';
 import { InvestimentModel } from '../Models/investiment.model';
 import { ClientModel } from '../Models/client.model';
-import { SerializeUserAssets } from '../utils/Serialize';
+import { SerializeForGetUserAssets } from '../utils/Serialize';
 
 export class ClientService {
   async getBalance(clientLogged: any) {
@@ -22,7 +21,7 @@ export class ClientService {
       )
 
     const userAssetsSerialized = userAssets
-      .map((userAsset) => SerializeUserAssets(userAsset));
+      .map((userAsset) => SerializeForGetUserAssets(userAsset));
     return userAssetsSerialized;
   }
 
