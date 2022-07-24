@@ -3,7 +3,7 @@ import { ErrorHandle } from "../Class/error";
 import { AssetsModel } from "../Models/assets.model";
 import { assetType } from "../Types/Asset.type";
 import getRandomInt from "../utils/getRandomInt";
-import { Serialize } from "../utils/Serialize";
+import { SerializeAssets } from "../utils/Serialize";
 
 export class AssetsService {
   async getAllAssets() {
@@ -11,7 +11,7 @@ export class AssetsService {
     const allAssets = await assetsInstance.getAllAssets();
 
     const allAssetsSerialized = allAssets
-      .map((asset) => Serialize(asset));
+      .map((asset) => SerializeAssets(asset));
     return allAssetsSerialized;
   }
 
@@ -53,6 +53,6 @@ export class AssetsService {
 
     if (!asset) throw new ErrorHandle(StatusCodes.BAD_REQUEST, 'Asset is not exists');
     
-    return Serialize(asset);
+    return SerializeAssets(asset);
   }
 };

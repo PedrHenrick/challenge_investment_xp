@@ -5,7 +5,7 @@ import { UserRepository } from "../Database/Repositores/User.repository";
 import { UserAssetRepository } from "../Database/Repositores/UserAsset.repository";
 import { AssetsModel } from "../Models/assets.model";
 import { InvestimentModel } from "../Models/investiment.model";
-import { UserModel } from "../Models/user.model";
+import { UserModel } from "../Models/client.model";
 import { investimentType } from "../Types/investimentType";
 
 export class InvestimentService {
