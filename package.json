@@ -7,6 +7,8 @@
   "author": "Pedro Mesquita <pedro.mesquita.hc@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/swagger-jsdoc": "^6.0.1",
+    "@types/swagger-ui-express": "^4.1.3",
     "@types/axios": "^0.14.0",
     "@types/bcrypt-nodejs": "^0.0.31",
     "@types/cors": "^2.8.12",
@@ -41,9 +43,5 @@
     "dev": "nodemon --exec ts-node --transpile-only ./src/server.ts",
     "migration:generate": "typeorm-ts-node-commonjs -d ./src/Database/data-source.ts migration:generate ./src/Database/Migrations/default",
     "migration:run": "typeorm-ts-node-commonjs -d ./src/Database/data-source.ts migration:run"
-  },
-  "devDependencies": {
-    "@types/swagger-jsdoc": "^6.0.1",
-    "@types/swagger-ui-express": "^4.1.3"
   }
 }
