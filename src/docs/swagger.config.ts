@@ -6,10 +6,16 @@ export const swaggerConfig = {
       description: "Api que simula um site investimentos",
       version: "1.0"
     },
-    servers: [{
+    servers: [
+      {
       url: "http://localhost:3001",
       description: "Servidor local"
-    }],
+      },
+      {
+        url: "https://challenge-investment-xp.herokuapp.com/",
+        description: "Servidor deploy"
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: {
