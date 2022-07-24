@@ -12,6 +12,9 @@ export class User {
   @PrimaryGeneratedColumn({ type: 'integer' })
   client_code: number;
 
+  @Column({ type: 'varchar' })
+  fullName: string;
+
   @Column({ type: 'varchar', unique: true })
   email: string;
 

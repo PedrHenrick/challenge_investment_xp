@@ -22,6 +22,7 @@ export class AccessService {
 
     const token = generateJWTToken({
       client_code: user.client_code,
+      fullName: user.fullName,
       email: user.email,
     });
     return token;
@@ -42,6 +43,7 @@ export class AccessService {
 
     const token = generateJWTToken({
       client_code: userCreated.client_code,
+      fullName: userCreated.fullName,
       email: userCreated.email,
     });
     return token;
