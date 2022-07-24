@@ -7,7 +7,7 @@ export class ClientModel {
     return user as userType;
   };
 
-  async updateInformations(updateObject: any) {
+  async updateInformations(updateObject: userType) {
     await UserRepository.save(updateObject);
     return "User updated"
   };

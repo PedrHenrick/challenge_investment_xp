@@ -1,5 +1,3 @@
-import { StatusCodes } from "http-status-codes";
-import { ErrorHandle } from "../Class/error";
 import { FinanceAssetRepository } from "../Database/Repositores/FinanceAsset.repository";
 import { assetType } from "../Types/Asset.type";
 
@@ -9,18 +7,13 @@ export class AssetsModel {
     return allAssets as assetType[];
   }
 
-  async autoUpdateValues({asset_code, unit_value}: assetType) {
-    const Assets = await FinanceAssetRepository.findOneBy({ asset_code });
-    
-    if (!Assets) throw new ErrorHandle(StatusCodes.BAD_REQUEST,'Assets deleted of database');
-    
-    Assets.unit_value = unit_value ? unit_value : Assets.unit_value;
-    
-    return FinanceAssetRepository.save(Assets);
-  }
-
   async getOneAsset(asset_code: number) {
     const Assets = await FinanceAssetRepository.findOneBy({ asset_code });
     return Assets as assetType;
   }
+
+  async updateInformations(updateObject: assetType) {
+    await FinanceAssetRepository.save(updateObject);
+    return "Asset updated"
+  };
 }
