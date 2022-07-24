@@ -7,7 +7,7 @@
     
   **O desafio técnico se baseia em uma API de investimentos onde temos que desenvolver um back-end que possibilite o usuário realizar as seguintes operações dentro do banco de dados:**
 
-  - ### Register - Cadastrar-se: /cadastro
+  - ### Register - Cadastrar-se: /acessar/cadastro
 
     - Nessa rota será possível que o usuário se cadastre na plataforma, gerando o nosso hash/token JWT.
     - Para o funcionamento padrão é necessário fazer uma requisição post passando os dados em JSON, com a seguinte estrutura:
@@ -22,7 +22,7 @@
 
     Se tudo estiver ok, será retornado um token;
 
-   - ### Login - Entrar: /login
+   - ### Login - Entrar: /acessar/login
 
      - Nessa rota será possível que o usuário se cadastre na plataforma, gerando o nosso hash/token JWT.
      - Para o funcionamento padrão é necessário fazer uma requisição post passando os dados em JSON, com a seguinte estrutura:
@@ -43,96 +43,96 @@
 
      ```json
      [
-         {
-             "codAtivo": 2,
-             "NomeAtivo": "GOLL4",
-             "QtdeAtivo": 200,
-             "Valor": "128.24"
-         },
-         {
-             "codAtivo": 8,
-             "NomeAtivo": "NTCO3",
-             "QtdeAtivo": 200,
-             "Valor": "109.26"
-         },
-         {
-             "codAtivo": 14,
-             "NomeAtivo": "BBDC4",
-             "QtdeAtivo": 200,
-             "Valor": "69.63"
-         },
-         {
-             "codAtivo": 3,
-             "NomeAtivo": "BIDI11",
-             "QtdeAtivo": 200,
-             "Valor": "85.06"
-         },
-         {
-             "codAtivo": 5,
-             "NomeAtivo": "SULA11",
-             "QtdeAtivo": 200,
-             "Valor": "98.71"
-         },
-         {
-             "codAtivo": 1,
-             "NomeAtivo": "ABEV3",
-             "QtdeAtivo": 200,
-             "Valor": "87.69"
-         },
-         {
-             "codAtivo": 4,
-             "NomeAtivo": "AMER3",
-             "QtdeAtivo": 200,
-             "Valor": "80.13"
-         },
-         {
-             "codAtivo": 10,
-             "NomeAtivo": "RADL3",
-             "QtdeAtivo": 200,
-             "Valor": "88.48"
-         },
-         {
-             "codAtivo": 11,
-             "NomeAtivo": "XP",
-             "QtdeAtivo": 390,
-             "Valor": "110.27"
-         },
-         {
-             "codAtivo": 9,
-             "NomeAtivo": "BRKM5",
-             "QtdeAtivo": 200,
-             "Valor": "91.18"
-         },
-         {
-             "codAtivo": 13,
-             "NomeAtivo": "MGLU3",
-             "QtdeAtivo": 200,
-             "Valor": "119.43"
-         },
-         {
-             "codAtivo": 15,
-             "NomeAtivo": "PETR4",
-             "QtdeAtivo": 200,
-             "Valor": "76.88"
-         },
-         {
-             "codAtivo": 6,
-             "NomeAtivo": "CIELO",
-             "QtdeAtivo": 200,
-             "Valor": "79.34"
-         },
-         {
-             "codAtivo": 7,
-             "NomeAtivo": "MRVE3",
-             "QtdeAtivo": 200,
-             "Valor": "108.12"
-         },
-         {
-             "codAtivo": 12,
-             "NomeAtivo": "HAPV3",
-             "QtdeAtivo": 200,
-             "Valor": "132"
-         }
+       {
+         "codAtivo": 11,
+         "NomeAtivo": "XP",
+         "QtdeAtivo": 280,
+         "Valor": "104.74"
+       },
+       {
+         "codAtivo": 7,
+         "NomeAtivo": "MRVE3",
+         "QtdeAtivo": 200,
+         "Valor": "87.33"
+       },
+       {
+         "codAtivo": 5,
+         "NomeAtivo": "SULA11",
+         "QtdeAtivo": 160,
+         "Valor": "66.14"
+       },
+       {
+         "codAtivo": 12,
+         "NomeAtivo": "HAPV3",
+         "QtdeAtivo": 200,
+         "Valor": "80.8"
+       },
+       {
+         "codAtivo": 10,
+         "NomeAtivo": "RADL3",
+         "QtdeAtivo": 200,
+         "Valor": "64.29"
+       },
+       {
+         "codAtivo": 1,
+         "NomeAtivo": "ABEV3",
+         "QtdeAtivo": 200,
+         "Valor": "54.68"
+       },
+       {
+         "codAtivo": 4,
+         "NomeAtivo": "AMER3",
+         "QtdeAtivo": 200,
+         "Valor": "83.74"
+       },
+       {
+         "codAtivo": 9,
+         "NomeAtivo": "BRKM5",
+         "QtdeAtivo": 200,
+         "Valor": "154.45"
+       },
+       {
+         "codAtivo": 14,
+         "NomeAtivo": "BBDC4",
+         "QtdeAtivo": 200,
+         "Valor": "63.59"
+       },
+       {
+         "codAtivo": 2,
+         "NomeAtivo": "GOLL4",
+         "QtdeAtivo": 200,
+         "Valor": "84.19"
+       },
+       {
+         "codAtivo": 15,
+         "NomeAtivo": "PETR4",
+         "QtdeAtivo": 200,
+         "Valor": "54.64"
+       },
+       {
+         "codAtivo": 13,
+         "NomeAtivo": "MGLU3",
+         "QtdeAtivo": 200,
+         "Valor": "185.67"
+       },
+       {
+         "codAtivo": 8,
+         "NomeAtivo": "NTCO3",
+         "QtdeAtivo": 200,
+         "Valor": "124.41"
+       },
+       {
+         "codAtivo": 3,
+         "NomeAtivo": "BIDI11",
+         "QtdeAtivo": 200,
+         "Valor": "159.38"
+       },
+       {
+         "codAtivo": 6,
+         "NomeAtivo": "CIELO",
+         "QtdeAtivo": 200,
+         "Valor": "81.33"
+       }
      ]
      ```
 
@@ -142,10 +142,10 @@
 
      ```json
      {
-         "codAtivo": 2,
-         "NomeAtivo": "GOLL4",
-         "QtdeAtivo": 200,
-         "Valor": "128.24"
+       "codAtivo": 11,
+       "NomeAtivo": "XP",
+       "QtdeAtivo": 280,
+       "Valor": "100.44"
      }
      ```
 
@@ -157,7 +157,7 @@
 
      ```json
      {
-         "Valor": 120000
+         "valor": 120000
      }
      ```
 
@@ -169,7 +169,7 @@
 
      ```json
      {
-         "Valor": 6000
+         "valor": 6000
      }
      ```
 
@@ -181,7 +181,7 @@
 
      ```json
      {
-         "Saldo": 6000
+         "saldo": 6000
      }
      ```
 
@@ -193,18 +193,11 @@
 
      ```json
      [
-         {
-             "CodCliente": 2,
-             "CodAtivo": 11,
-             "QtdeAtivo": 10,
-             "Valor": "108.07"
-         },
-         {
-             "CodCliente": 2,
-             "CodAtivo": 5,
-             "QtdeAtivo": 10,
-             "Valor": "95.75"
-         }
+       {
+         "CodAtivo": 5,
+         "QtdeAtivo": 20,
+         "Valor": "75.47"
+       }
      ]
      ```
 
@@ -314,7 +307,7 @@
 <details>
  <summary><strong>💌 O que fazer após o code-review?</strong></summary>
  
-   <h4> Após o seu review sobre tudo o que foi abordado, deixo como sugestão responder este [formulário de feedback](https://forms.gle/ZJjEZNEAuc9QUauY9), desenvolvido por mim para auxiliar na melhoria desse e de outros projetos. </h4>
+   <h4> Após o seu review sobre tudo o que foi abordado, deixo como sugestão responder este [formulário de feedback](https://forms.gle/UtHgnNkQ3gDZPyzi8), desenvolvido por mim para auxiliar na melhoria desse e de outros projetos. </h4>
    <h4> Aguardo sua resposta, obrigado! </h4> 
 
 </details>    
@@ -331,7 +324,7 @@
 2. Agora que estamos área de trabalho, no terminal utilize o comando `git clone git@github.com:PedrHenrick/challenge_investment_xp.git` para clonar a pasta do repositório
 3. Logo depois entre na pasta clonada utilizando o comando `cd challenge_investment_xp`
 4. Dentro da pasta, execute o comando `npm install` para instalar todas as dependências do projeto
-5. Para rodar a aplicação no terminal digite o comando `npm start`. Caso prefira, você também pode rodar a aplicação utilizando o docker, basta rodar o comando `docker-compose-up -d --build` 
+6. Para rodar a aplicação no terminal digite o comando `npm start`. Caso prefira, você também pode rodar a aplicação utilizando o docker, basta rodar o comando `docker-compose-up -d --build`, mas nesse caso rode também o comando `docker exec -it investiment_api bash` e digite `npm start`.
 
 **E pronto! Já temos nossa aplicação na sua máquina e rodando. Agora você já pode fechar o terminal!**
 
@@ -356,7 +349,7 @@
 Para a verificação das rotas, é necessário o uso de algum programa que consiga fazer essas requisições nas rotas. Para facilitar isso, trago algumas opções:
 
 - Postman - O postman foi usado em toda a nossa aplicação, onde no mesmo também foi criado uma estrutura de pastas já com as requisições definidas, segue estrutura [neste link](https://app.getpostman.com/join-team?invite_code=229048e342484b215423a305b1613986&target_code=d11502a7df5cf3021f69d6bd21e760cb)
-- Swagger - Também é possivel utilizar a nossa documentação detalhada do swagger, facilitando o uso das rotas
+- Swagger - Também é possivel utilizar a nossa documentação detalhada do swagger, facilitando o uso das rotas, basta entrar na rota `/docs` da aplicação
 
 ---
 
@@ -364,9 +357,9 @@ Para a verificação das rotas, é necessário o uso de algum programa que consi
 
 Para a evolução o projeto, fica claro algumas modificações que devem serem feitas. São elas:
 
-- [ ]  Adicionar testes unitários mais completos
-- [ ]  Adicionar testes de integração mais completos
-- [ ]  Melhorar lógica de recompra de ativos, ou seja, quando um cliente compra um ativo mais de uma vez, pois que os valores se modificam aleatóriamente e a primeira compra pode não ter o mesmo valor da segunda, gerando uma compra extra de ações, com dois valores.
+- [ ]  Adicionar testes unitários
+- [ ]  Adicionar testes de integração
+- [ ]  Melhorar lógica de recompra de ativos, ou seja, quando um cliente compra um ativo mais de uma vez, pois que os valores se modificam aleatóriamente e a primeira compra pode não ter o mesmo valor da segunda, gerando uma compra extra de ações, com dois valores. Na aplicação aleta somente a quantidade, nas vendas é pego o valor atual, mas na tabela que mostra as compras consta somente o primeiro valor.
 - [ ]  Melhorar tipagem com typescript
 - [ ]  Aplicar o SOLID
 - [ ]  Melhorar estrutura das classes
